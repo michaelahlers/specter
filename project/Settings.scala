@@ -20,10 +20,21 @@ object Settings {
         "-feature" ::
           "-unchecked" ::
           "-deprecation" ::
-          "-target:jvm-1.8" ::
           "-Xfatal-warnings" ::
           "-Xmax-classfile-name" :: "150" ::
-          Nil
+          Nil,
+
+      scalacOptions ++=
+        (CrossVersion.partialVersion(scalaVersion.value) match {
+
+          case Some((2, minor)) if 11 <= minor =>
+            "-target:jvm-1.8" ::
+              Nil
+
+          case _ =>
+            Nil
+
+        })
 
     )
 
