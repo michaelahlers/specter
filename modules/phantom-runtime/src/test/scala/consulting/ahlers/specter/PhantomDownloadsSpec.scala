@@ -1,6 +1,7 @@
 package consulting.ahlers.specter
 
 import de.flapdoodle.embed.process.distribution.{BitSize, Distribution}
+import de.flapdoodle.embed.process.io.directories.UserTempDirInPlatformTempDir
 import org.scalatest._
 
 /**
@@ -10,7 +11,14 @@ class PhantomDownloadsSpec
   extends FlatSpec
           with Matchers {
 
-  val artifactStore = PhantomArtifactStoreBuilder.build()
+  val artifactStore =
+    PhantomArtifactStoreBuilder
+      .download({
+        PhantomDownloadConfigBuilder
+          .artifactStorePath(new UserTempDirInPlatformTempDir)
+          .build()
+      })
+      .build()
 
   val distributions =
     for {
