@@ -1,7 +1,7 @@
 package consulting.ahlers.specter
 
 import de.flapdoodle.embed.process.distribution.{BitSize, Distribution}
-import de.flapdoodle.embed.process.io.directories.UserTempDirInPlatformTempDir
+import de.flapdoodle.embed.process.io.directories.TempDirInPlatformTempDir
 import org.scalatest._
 
 /**
@@ -15,7 +15,7 @@ class PhantomDownloadsSpec
     PhantomArtifactStoreBuilder
       .download({
         PhantomDownloadConfigBuilder
-          .artifactStorePath(new UserTempDirInPlatformTempDir)
+          .artifactStorePath(new TempDirInPlatformTempDir)
           .build()
       })
       .build()
