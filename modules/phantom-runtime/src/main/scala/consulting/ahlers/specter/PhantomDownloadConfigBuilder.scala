@@ -15,8 +15,10 @@ object PhantomDownloadConfigBuilder
   fileNaming().setDefault(new UUIDTempNaming())
 
   /* Official download site appears problematic for programmatic user agents. See michaelahlers/specter#1 (and ariya/phantomjs#13951). */
+
   // downloadPath().setDefault(new DownloadPath("https://bitbucket.org/ariya/phantomjs/downloads/"))
-  downloadPath().setDefault(new DownloadPath("https://cnpmjs.org/downloads/"))
+  // downloadPath().setDefault(new DownloadPath("https://cnpmjs.org/downloads/"))
+  downloadPath().setDefault(new DownloadPath("https://github.com/paladox/phantomjs/releases/download/2.1.7/"))
 
   progressListener().setDefault(new StandardConsoleProgressListener())
   packageResolver().setDefault(PhantomPackageResolver)
