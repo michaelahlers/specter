@@ -13,7 +13,11 @@ object PhantomDownloadConfigBuilder
   extends DownloadConfigBuilder {
 
   fileNaming().setDefault(new UUIDTempNaming())
-  downloadPath().setDefault(new DownloadPath("https://bitbucket.org/ariya/phantomjs/downloads/"))
+
+  /* Official download site appears problematic for programmatic user agents. See michaelahlers/specter#1 (and ariya/phantomjs#13951). */
+  // downloadPath().setDefault(new DownloadPath("https://bitbucket.org/ariya/phantomjs/downloads/"))
+  downloadPath().setDefault(new DownloadPath("https://cnpmjs.org/downloads/"))
+
   progressListener().setDefault(new StandardConsoleProgressListener())
   packageResolver().setDefault(PhantomPackageResolver)
   artifactStorePath().setDefault(new UserHome(".embedded-phantom"))
